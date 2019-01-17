@@ -26,7 +26,9 @@ const server = http.createServer((req, res) => {
     res.setHeader('Manuel', 'Manuel is awesome')
     res.write('<html>')
     res.write('<head><title>Testing my server</title></head>')
-    res.write('<body><h1>Welcome to my server page!</h1></body>')
+    res.write('<body><h1>Welcome to my server page!</h1>')
+    res.write('<a href="https://github.com/manoy96/NodeJS-playground">Here is my Github</a>')
+    res.write('</body>')
     res.write('</html>')
     return res.end()
   }
@@ -40,19 +42,19 @@ const server = http.createServer((req, res) => {
     res.write(JSON.stringify(jane))
     return res.end()
   }
-  if (req.url === '/user'){
-    const body = [];
-    req.on('data', chunk => {
-      body.push(chunk)
-    })
-    req.on('end', () => {
-      const parsedBody = Buffer.concat(body).toString()
-      console.log(parsedBody.split('=')[1])
-    })
-    res.statusCode = 302
-    res.setHeader('Location', '/')
-    res.end()
-  }
+  // if (req.url === '/user'){
+  //   const body = [];
+  //   req.on('data', chunk => {
+  //     body.push(chunk)
+  //   })
+  //   req.on('end', () => {
+  //     const parsedBody = Buffer.concat(body).toString()
+  //     console.log(parsedBody.split('=')[1])
+  //   })
+  //   res.statusCode = 302
+  //   res.setHeader('Location', '/')
+  //   res.end()
+  // }
 })
 
 
